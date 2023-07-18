@@ -43,5 +43,18 @@ public class Dog extends Animal{
     public void housekeeping(){
         System.out.println("我会看家");
     }
+//
+//    //匿名内部类
+//    public static class AnonymousInnerDog{
+//        public static void main(String[] args) {
+//            Dog dog = new Dog(){
+//                @Override
+//                public void housekeeping() {
+//                    System.out.println("我会匿名看家");
+//                }
+//            };
+//            dog.housekeeping();
+//        }
+//    }
 
 }
