@@ -19,6 +19,10 @@ public class Dog extends Animal{
     String name;
     Date birthday;
 
+    //final修饰
+    final static double PI = 3.1415;
+
+    //类变量
     public static Integer age1;
     static Integer age1np;
 

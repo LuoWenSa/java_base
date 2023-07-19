@@ -13,9 +13,15 @@ public class typeTest {
 //        double b = 0f;
 //        System.out.println(a-b);
 
+        //浮点数转整数
+//        float f = 23.9f;
+//        int fi = (int) f;
+//        System.out.println("浮点数转整数："+fi);
 
-        Byte c = 'a';
-        System.out.println(c);
+        //自动类型转换
+//        int a =10;
+//        float b = a;
+
 
     }
 }
