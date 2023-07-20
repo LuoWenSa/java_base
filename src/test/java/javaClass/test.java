@@ -26,6 +26,9 @@ public class test {
         System.out.println("dog1的age:"+dog1.getAge());
         System.out.println("dog2的age:"+dog2.getAge());
 
+        //可以通过类名调用静态方法 ,不能通过new对象的方式访问
+        Dog.staticMethod();
 
     }
+
 }

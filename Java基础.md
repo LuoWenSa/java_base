@@ -22,13 +22,22 @@ https://www.runoob.com/java/java-basic-syntax.html
 
 - 访问控制修饰符 : default, public , protected, private
 
+  **private**：表示私有的,表示类访问权限.<font color="#dd0000">只能在本类中访问</font>,离开本类之后,就不能直接访问.
+
+  **default**：不写(缺省)(void):表示包私有,表示<font color="#dd0000">包访问权限</font>. 访问者的包必须和当前定义类的包相同才能访问.(两个类在同一个包下)
+
+  **protected**：被protected修饰的成员对于<font color="#dd0000">本包和其子类</font>(extends)可见
+
+  **public**：表示全局的,可以<font color="#dd0000">公共访问</font>权限,如某个字段/方法,使用了public修饰,则可以在当前项目中任何地方访问
+  ![java修饰符](https://img-blog.csdnimg.cn/a31752f295da446185bff0a0460e7451.png)
+
 - 非访问控制修饰符 : final, abstract, static, synchronized
 
 ### 四、Java 变量
 
-- **局部变量**：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，<font color="#dd0000">方法结束后，变量就会自动销毁</font>。
+- **局部变量**：**对象生成(new)时才会有**。在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，<font color="#dd0000">方法结束后，变量就会自动销毁</font>。
 
-- **类变量**（静态变量）:类变量也声明在类中，方法体之外，但必须声明为 <font color="#dd0000">static 类型</font>。
+- **类变量**（静态变量）:**类加载时就会有**。类变量也声明在类中，方法体之外，但必须声明为 <font color="#dd0000">static 类型</font>。
 
 - **成员变量**（非静态变量）：成员变量是<font color="#dd0000">定义在类中，方法体之外的变量</font>。**这种变量在创建对象的时候实例化**。成员变量可以被类中方法、构造方法和特定类的语句块访问
 

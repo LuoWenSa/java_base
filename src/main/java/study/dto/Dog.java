@@ -20,7 +20,7 @@ public class Dog extends Animal{
     Date birthday;
 
     //final修饰
-    final static double PI = 3.1415;
+    static final double PI = 3.1415;
 
     //类变量
     public static Integer age1;
@@ -46,6 +46,10 @@ public class Dog extends Animal{
 
     public void housekeeping(){
         System.out.println("我会看家");
+    }
+
+    public static void staticMethod(){
+        System.out.println("这是静态方法");
     }
 //
 //    //匿名内部类
