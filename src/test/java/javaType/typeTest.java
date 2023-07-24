@@ -1,5 +1,7 @@
 package javaType;
 
+import java.math.BigDecimal;
+
 /**
  * @author: Ray
  * @date: 2023年07月05日 16:34
@@ -12,6 +14,12 @@ public class typeTest {
 //        double a = 0.6f;
 //        double b = 0f;
 //        System.out.println(a-b);
+//
+//        BigDecimal c = new BigDecimal("0.6");
+//        BigDecimal d = c.subtract(BigDecimal.ZERO);
+//        System.out.println(d);
+
+
 
         //浮点数转整数
 //        float f = 23.9f;

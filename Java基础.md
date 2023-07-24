@@ -22,7 +22,7 @@ https://www.runoob.com/java/java-basic-syntax.html
 
 - 访问控制修饰符 : default, public , protected, private
 
-  **private**：表示私有的,表示类访问权限.<font color="#dd0000">只能在本类中访问</font>,离开本类之后,就不能直接访问.
+  **private**：表示私有的,表示类访问权限.<font color="#dd0000">只能在本类中访问</font>,离开本类之后,就不能直接访问.<font color="#dd0000">加了private的方法或变量不能通过类名.的方法访问</font>
 
   **default**：不写(缺省)(void):表示包私有,表示<font color="#dd0000">包访问权限</font>. 访问者的包必须和当前定义类的包相同才能访问.(两个类在同一个包下)
 
@@ -32,6 +32,17 @@ https://www.runoob.com/java/java-basic-syntax.html
   ![java修饰符](https://img-blog.csdnimg.cn/a31752f295da446185bff0a0460e7451.png)
 
 - 非访问控制修饰符 : final, abstract, static, synchronized
+
+  **static** 修饰符，用来修饰类方法和类变量
+  **final** 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的
+
+  **abstract** 修饰符，用来创建抽象类和抽象方法。抽象类不能用来实例化对象，声明抽象类的**唯一目的**是为了<font color="#dd0000">将来对该类进行扩充</font>。
+
+  一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
+
+  抽象类可以包含抽象方法和非抽象方法。
+
+  **synchronized** 和 **volatile** 修饰符，主要用于线程的编程。
 
 ### 四、Java 变量
 
@@ -95,6 +106,8 @@ public class HelloWorld {
 在 Java 中，一个类可以由其他类派生。如果你要创建一个类，而且已经存在一个类具有你所需要的属性或方法，那么你可以将新创建的类继承该类。
 
 利用继承的方法，可以<font color="#dd0000">重用已存在类的方法和属性</font>，而不用重写这些代码。被继承的类称为**超类（super class）**，派生类称为**子类（sub class)**
+
+**父类中声明为 private 的方法，不能够被子类继承**
 
 ### 十、接口(interface)
 
