@@ -380,3 +380,18 @@ switch case 语句：https://www.runoob.com/java/java-switch-case.html
 
 
 
+### 一、装箱与拆箱
+
+这种由编译器特别支持的包装称为<font color="#dd0000">装箱</font>，所以当内置数据类型被当作对象使用的时候，编译器会把内置类型装箱为包装类。相似的，编译器也可以把一个对象<font color="#dd0000">拆箱</font>为内置类型
+
+```java
+public class Test{
+ 
+   public static void main(String[] args){
+      Integer x = 5;   //装箱
+      x =  x + 10;  //拆箱后装箱
+      System.out.println(x); 
+   }
+}
+```
+
