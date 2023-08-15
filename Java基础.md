@@ -376,6 +376,8 @@ switch case 语句：https://www.runoob.com/java/java-switch-case.html
 
 ## Java Number & Math 类
 
+https://www.runoob.com/java/java-number.html
+
 ![](https://www.runoob.com/wp-content/uploads/2013/12/OOP_WrapperClass.png)
 
 
@@ -395,3 +397,4 @@ public class Test{
 }
 ```
 
+### 二、Java Math 类
