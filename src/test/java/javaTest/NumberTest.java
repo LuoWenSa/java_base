@@ -6,5 +6,9 @@ public class NumberTest {
 //        System.out.println("a.byteValue() = " + a.intValue());
         Double aDouble = Double.valueOf(a);
         System.out.println("a = " + a.toString());
+
+        aDouble.toString();
+        Double.parseDouble("12.3");
+
     }
 }

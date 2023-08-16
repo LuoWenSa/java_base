@@ -398,3 +398,54 @@ public class Test{
 ```
 
 ### 二、Java Math 类
+
+Java 的 Math 包含了用于执行基本数学运算的属性和方法，如初等指数、对数、平方根和三角函数
+
+```java
+public class Test {  
+    public static void main (String []args)  
+    {  
+        System.out.println("90 度的正弦值：" + Math.sin(Math.PI/2));  
+        System.out.println("0度的余弦值：" + Math.cos(0));  
+        System.out.println("60度的正切值：" + Math.tan(Math.PI/3));  
+        System.out.println("1的反正切值： " + Math.atan(1));  
+        System.out.println("π/2的角度值：" + Math.toDegrees(Math.PI/2));  
+        System.out.println(Math.PI);  
+    }  
+}
+```
+
+
+
+### 三、Number & Math 类方法
+
+1. Number类常用：
+
+```java
+public class Test{
+public static void main(String args[]){
+    			//1.valueOf() 装箱(可接受String作为参数！)
+                Integer x =Integer.valueOf(9);  
+    			Integer y =Integer.valueOf("10");
+                //2.xxxValue() 拆箱
+    			//返回 byte 原生数据类型
+                System.out.println(x.byteValue());
+                //返回 double 原生数据类型
+                System.out.println(x.doubleValue());
+                //返回 long 原生数据类型
+                System.out.println(x.longValue());
+    
+    			
+    			//3.toString()  Number转String
+        		Integer x = 5;
+                System.out.println(x.toString());  
+                System.out.println(Integer.toString(12)); 
+    			//4.parseXxx()  String转内置数据类型-->Number
+				int x =Integer.parseInt("9");
+        		double c = Double.parseDouble("5");
+    			
+        }
+}
+```
+
+2. Math 类常用：
