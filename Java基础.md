@@ -399,6 +399,8 @@ public class Test{
 
 ### 二、Java Math 类
 
+https://www.runoob.com/java/java-number.html
+
 Java 的 Math 包含了用于执行基本数学运算的属性和方法，如初等指数、对数、平方根和三角函数
 
 ```java
@@ -449,3 +451,130 @@ public static void main(String args[]){
 ```
 
 2. Math 类常用：
+
+```java
+public class MathTest {
+    public static void main(String[] args) {
+        double x = 3.6;
+        double z = 3.5;
+        double y = 3.4;
+        System.out.println("Math.ceil(x) = " + Math.ceil(x));
+        System.out.println("Math.ceil(z) = " + Math.ceil(z));
+        System.out.println("Math.ceil(y) = " + Math.ceil(y));  //向上取整 ans：4
+
+        System.out.println("Math.floor(x) = " + Math.floor(x));
+        System.out.println("Math.floor(z) = " + Math.floor(z));
+        System.out.println("Math.floor(y) = " + Math.floor(y));  //向下取整 ans：3
+
+        System.out.println("Math.round(x) = " + Math.round(x));
+        System.out.println("Math.round(z) = " + Math.round(z));
+        System.out.println("Math.round(y) = " + Math.round(y));  //四舍五入 alg：Math.floor(x+0.5)
+
+        System.out.println("Math.random() = " + Math.random());  //返回值:double 范围:[0.0,1.0)
+
+        //etc
+        System.out.println("new Random().nextInt(10) = " + new Random().nextInt(10));  //0~9
+    }
+}
+
+-----------------------------------
+Math.ceil(x) = 4.0
+Math.ceil(z) = 4.0
+Math.ceil(y) = 4.0
+Math.floor(x) = 3.0
+Math.floor(z) = 3.0
+Math.floor(y) = 3.0
+Math.round(x) = 4
+Math.round(z) = 4
+Math.round(y) = 3
+Math.random() = 0.7537938749527735
+new Random().nextInt(10) = 4
+```
+
+## Java Character 类
+
+https://www.runoob.com/java/java-character.html
+
+```java
+public class CharacterTest {
+    public static void main(String[] args) {
+        Character num = '1';
+        Character zfSmall = 'a';
+        Character zfBig = 'a';
+        Character space = ' ';
+
+        System.out.println("Character.isDigit() = " + Character.isDigit(num));  //是否是一个数字字符
+        System.out.println("Character.isLetter() = " + Character.isLetter(zfSmall));  //是否是一个字母字符
+        System.out.println("Character.toUpperCase() = " + Character.toUpperCase(zfSmall)); //小写字符转大写字符 a --> A
+        System.out.println("Character.toLowerCase() = " + Character.toLowerCase(zfBig)); //大写字符转小写字符 A --> a
+        System.out.println("Character.isWhitespace() = " + Character.isWhitespace(space)); //是否是一个空白字符
+    }
+}
+
+-------------------------------
+Character.isDigit() = true
+Character.isLetter() = true
+Character.toUpperCase() = A
+Character.toLowerCase() = a
+Character.isWhitespace() = true  
+```
+
+## Java String 类
+
+https://www.runoob.com/java/java-string.html
+
+### 一、String类型创建
+
+0.底层还是字符数组char[]
+
+1.String 创建的字符串存储在**公共池**中，2.而 new 创建的字符串对象在**堆**上：
+
+```java
+String s1 = "Runoob";              // String 直接创建
+String s2 = "Runoob";              // String 直接创建
+String s3 = s1;                    // 相同引用
+String s4 = new String("Runoob");   // String 对象创建
+String s5 = new String("Runoob");   // String 对象创建
+```
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/java-string-1-2020-12-01.png)
+
+**注意:**<font color="#dd0000">String 类是不可改变的，所以你一旦创建了 String 对象，那它的值就无法改变了</font>,如下图所示
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/string-no-modify.png)
+
+### 二、String 方法
+
+详情请见：https://www.runoob.com/java/java-string.html
+
+### #1、使用 **==** 和 **equals()** 比较字符串
+
+String 中 **==** 比较引用地址是否相同，**equals()** 比较字符串的内容是否相同：
+
+```java
+String s1 = "Hello";              // String 直接创建
+String s2 = "Hello";              // String 直接创建
+String s3 = s1;                   // 相同引用
+String s4 = new String("Hello");  // String 对象创建
+String s5 = new String("Hello");  // String 对象创建
+ 
+s1 == s1;         // true, 相同引用
+s1 == s2;         // true, s1 和 s2 都在公共池中，引用相同
+s1 == s3;         // true, s3 与 s1 引用相同
+s1 == s4;         // false, 不同引用地址
+s4 == s5;         // false, 堆中不同引用地址
+ 
+s1.equals(s3);    // true, 相同内容
+s1.equals(s4);    // true, 相同内容
+s4.equals(s5);    // true, 相同内容
+```
+
+### #2、String的 substring() 方法
+
+1.public String substring(int beginIndex, int endIndex) 
+
+ //beginIndex = 可视为字符数组下标的开始，endIndex = beginIndex + 要查询字符串的长度
+
+2.public String substring(int beginIndex)
+
+![](https://www.runoob.com/wp-content/uploads/2016/05/java-substring-20201208.png)
