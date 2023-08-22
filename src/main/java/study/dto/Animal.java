@@ -7,6 +7,9 @@ import lombok.Data;
  * @date: 2023年06月30日 16:55
  */
 public class Animal {
+
+    public String aniId;
+
     public void speak(){
         System.out.println("say：I am animal!");
     }

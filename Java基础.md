@@ -105,7 +105,7 @@ public class HelloWorld {
 
 在 Java 中，一个类可以由其他类派生。如果你要创建一个类，而且已经存在一个类具有你所需要的属性或方法，那么你可以将新创建的类继承该类。
 
-利用继承的方法，可以<font color="#dd0000">重用已存在类的方法和属性</font>，而不用重写这些代码。被继承的类称为**超类（super class）**，派生类称为**子类（sub class)**
+利用继承的方法，可以<font color="#dd0000">重用已存在类的方法和字段属性</font>，而不用重写这些代码。被继承的类称为**超类（super class）**，派生类称为**子类（sub class)**
 
 **父类中声明为 private 的方法，不能够被子类继承**
 
@@ -578,3 +578,60 @@ s4.equals(s5);    // true, 相同内容
 2.public String substring(int beginIndex)
 
 ![](https://www.runoob.com/wp-content/uploads/2016/05/java-substring-20201208.png)
+
+## Java StringBuffer 和 StringBuilder 类
+
+当对字符串进行修改的时候，需要使用 StringBuffer 和 StringBuilder 类。
+
+和 String 类不同的是，StringBuffer 和 StringBuilder 类的对象能够被多次的修改，并且不产生新的未使用对象。
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/java-string-20201208.png)
+
+### 一、区别
+
+在使用 **StringBuffer** 类时，每次都会对 StringBuffer 对象本身进行操作，而不是生成新的对象，所以如果需要对字符串进行修改推荐使用 StringBuffer，**线程相对来说安全，因为它内部每个方法都加了synchronized**。
+
+*（如果多个线程同时访问同一个`StringBuffer`对象其中一个线程在修改该对象时，其他线程也在访问该对象，则可能会发生竞态条件。）*
+
+**StringBuilder** 类在 Java 5 中被提出，它和 StringBuffer 之间的最大不同在于 StringBuilder 的方法不是线程安全的（不能同步访问）。
+
+由于 StringBuilder 相较于 StringBuffer **有速度优势**，所以多数情况下建议使用 StringBuilder 类。
+
+### 二、操作方法
+
+https://www.runoob.com/java/java-stringbuffer.html
+
+## Java 数组
+
+### 一、声明数组变量
+
+<font color="#dd0000">初始化后默认元素都是0</font>
+
+```java
+double[] myList = new double[10];         // 首选的方法，初始化后默认元素都是0
+double[] myList = {1,2,3,...,x};    
+或
+double myList[] = new double[10];         //效果相同，但不是首选方法
+double myList[] = {1,2,3,...,x};
+```
+
+### 二、常用方法
+
+java.util.Arrays 类能方便地操作数组，**它提供的所有方法都是静态**的。
+
+例：
+
+- 给数组赋值：通过 fill 方法。
+- 对数组排序：通过 sort 方法,按升序。
+- 比较数组：通过 equals 方法比较数组中元素值是否相等。
+- 查找数组元素：通过 binarySearch 方法能对排序好的数组进行二分查找法操作。
+
+## Java 日期时间
+
+### 一、日期比较
+
+Java使用以下三种方法来比较两个日期：
+
+- 使用 **getTime()** 方法获取两个日期（自1970年1月1日经历的毫秒数值），然后比较这两个值。
+- 使用方法 **before()，after() 和 equals()**。例如，一个月的12号比18号早，则 new Date(99, 2, 12).before(new Date (99, 2, 18)) 返回true。
+- 使用 **compareTo()** 方法，它是由 Comparable 接口定义的，Date 类实现了这个接口。

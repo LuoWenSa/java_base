@@ -1,6 +1,7 @@
 package javaClass;
 
 import study.dto.Animal;
+import study.dto.Cat;
 import study.dto.Dog;
 
 
@@ -28,6 +29,8 @@ public class test {
 
         //可以通过类名调用静态方法 ,不能通过new对象的方式访问
         Dog.staticMethod();
+
+        Cat c = new Cat();
 
     }
 
