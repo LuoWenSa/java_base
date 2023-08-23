@@ -1,7 +1,9 @@
 package javaTest;
 
+import java.io.PrintStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -34,5 +36,29 @@ public class DateTest {
             throw new RuntimeException(e);
         }
 
+        //Java 休眠(sleep)
+//        try {
+//            Thread.sleep(1000*3);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        //Calendar类
+        Calendar c = Calendar.getInstance();
+        c.set(2023, Calendar.MARCH,13);
+        //set
+        c.set(Calendar.MONTH, Calendar.MAY);
+        System.out.println("c.getTime() = " + new SimpleDateFormat("yyyy-MM-dd").format(c.getTime()));
+        //Add设置
+        c.add(Calendar.DATE, 20);
+        System.out.println("c.getTime() = " + new SimpleDateFormat("yyyy-MM-dd").format(c.getTime()));
+
+        System.out.println("c.get(Calendar.YEAR) = " + c.get(Calendar.YEAR));
+        System.out.println("c.get(Calendar.MONTH) = " + c.get(Calendar.MONTH) + 1);
+        System.out.println("c.get(Calendar.DATE) = " + c.get(Calendar.DATE));
+        System.out.println("c.get(Calendar.HOUR_OF_DAY) = " + c.get(Calendar.HOUR_OF_DAY));
+        System.out.println("c.get(Calendar.MINUTE) = " + c.get(Calendar.MINUTE));
+        System.out.println("c.get(Calendar.SECOND) = " + c.get(Calendar.SECOND));
+        System.out.println("c.get(Calendar.DAY_OF_WEEK) = " + c.get(Calendar.DAY_OF_WEEK)); //1-7 --> 星期日-星期六
     }
 }

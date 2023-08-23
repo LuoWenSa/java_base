@@ -628,6 +628,8 @@ java.util.Arrays 类能方便地操作数组，**它提供的所有方法都是�
 
 ## Java 日期时间
 
+https://www.runoob.com/java/java-date-time.html
+
 ### 一、日期比较
 
 Java使用以下三种方法来比较两个日期：
@@ -635,3 +637,94 @@ Java使用以下三种方法来比较两个日期：
 - 使用 **getTime()** 方法获取两个日期（自1970年1月1日经历的毫秒数值），然后比较这两个值。
 - 使用方法 **before()，after() 和 equals()**。例如，一个月的12号比18号早，则 new Date(99, 2, 12).before(new Date (99, 2, 18)) 返回true。
 - 使用 **compareTo()** 方法，它是由 Comparable 接口定义的，Date 类实现了这个接口。
+
+### 二、使用 SimpleDateFormat 格式化日期
+
+```java
+//使用 SimpleDateFormat 格式化日期
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //1.date --> String
+        System.out.println("simpleDateFormat.format(d) = " + simpleDateFormat.format(d));
+        try {
+            //2.String --> date
+            System.out.println("simpleDateFormat.parse() = " + simpleDateFormat.parse("2023-05-13 09:53:23"));
+        } catch (ParseException e) {
+            System.out.println("抛出异常后。。。");
+            throw new RuntimeException(e);
+        }
+```
+
+### 三、Java 休眠(sleep)
+
+```java
+        try {
+            Thread.sleep(1000*3);   //休眠3秒
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+```
+
+### 四、Calendar类
+
+**特点：**
+
+1.能设置和**获取日期数据的特定部分**呢，比如说小时，日，或者分钟
+
+2.在日期的这些部分**加上或者减去值**
+
+3.Calendar类的功能要比Date类强大很多，而且在实现方式上也比Date类要复杂一些。
+
+4.Calendar类是一个抽象类
+
+```java
+//创建一个代表系统当前日期的Calendar对象
+Calendar c = Calendar.getInstance();//默认是当前日期
+
+//设置日期为2023年5月13日
+c.set(2023, Calendar.MAY,13);
+
+//set只设定某个字段，其他年、日等同理
+c.set(Calendar.MONTH,Calendar.FEBRUARY); //将月份设置为2月
+
+//Add设置
+c.add(Calendar.DATE, 20);  //日期加上20天，其他的所有数值会被重新计算
+
+//Calendar类对象信息的获得
+Calendar c1 = Calendar.getInstance();
+// 获得年份
+int year = c1.get(Calendar.YEAR);
+// 获得月份
+int month = c1.get(Calendar.MONTH) + 1;
+// 获得日期
+int date = c1.get(Calendar.DATE);
+// 获得小时
+int hour = c1.get(Calendar.HOUR_OF_DAY);
+// 获得分钟
+int minute = c1.get(Calendar.MINUTE);
+// 获得秒
+int second = c1.get(Calendar.SECOND);
+// 获得星期几（注意（这个与Date类是不同的）：1代表星期日、2代表星期1、3代表星期二，以此类推）
+int day = c1.get(Calendar.DAY_OF_WEEK); //1-7 --> 星期日-星期六
+```
+
+### 五、GregorianCalendar类
+
+Calendar类实现了公历日历，GregorianCalendar是Calendar类的一个具体实现。
+
+## Java 正则表达式
+
+https://www.runoob.com/java/java-regular-expressions.html
+
+java.util.regex 包主要包括以下三个类：
+
+- **Pattern 类**：
+
+  pattern 对象是一个**正则表达式的编译表示**。Pattern 类没有公共构造方法。要创建一个 Pattern 对象，你必须首先调用其公共静态编译方法，它返回一个 Pattern 对象。该方法接受一个正则表达式作为它的第一个参数。
+
+- **Matcher 类**：
+
+  Matcher 对象是**对输入字符串进行解释和匹配操作的引擎**。与Pattern 类一样，Matcher 也没有公共构造方法。你需要调用 Pattern 对象的 matcher 方法来获得一个 Matcher 对象。
+
+- **PatternSyntaxException**：
+
+  PatternSyntaxException 是一个非强制异常类，它表示一个正则表达式模式中的语法错误。
