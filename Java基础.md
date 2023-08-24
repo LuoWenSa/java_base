@@ -728,3 +728,162 @@ java.util.regex 包主要包括以下三个类：
 - **PatternSyntaxException**：
 
   PatternSyntaxException 是一个非强制异常类，它表示一个正则表达式模式中的语法错误。
+
+## Java 方法
+
+https://www.runoob.com/java/java-methods.html
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/D53C92B3-9643-4871-8A72-33D491299653.jpg)
+
+### 一、可变参数
+
+```java
+public static void main(String[] args) {
+    int[] brr = {1,3,5,7};
+    print(2,4,6,8,10);  //可变参数
+}
+
+public static void print(int...arr){  //可变参数,表示同一类型的多个参数，可认为自动封装为一个数组
+    for (int i = 0; i < arr.length; i++) {
+        System.out.println("arr[" + i + "] = " + arr[i]);
+    }
+}
+```
+
+### 二、finalize() 方法
+
+Java 允许定义这样的方法，它在对象被垃圾收集器析构(回收)之前调用，这个方法叫做 finalize( )，它用来清除回收对象。
+
+在 finalize() 方法里，你必须指定在对象销毁时候要执行的操作。
+
+**例子：**
+
+```java
+public class FinalizationDemo {  
+  public static void main(String[] args) {  
+    Cake c1 = new Cake(1);  
+    Cake c2 = new Cake(2);  
+    Cake c3 = new Cake(3);  
+      
+    c2 = c3 = null;  
+    System.gc(); //调用Java垃圾收集器
+  }  
+}  
+ 
+class Cake extends Object {  
+  private int id;  
+  public Cake(int id) {  
+    this.id = id;  
+    System.out.println("Cake Object " + id + "is created");  
+  }  
+    
+  protected void finalize() throws java.lang.Throwable {  
+    super.finalize();  
+    System.out.println("Cake Object " + id + "is disposed");  
+  }  
+}
+-------------------------
+Cake Object 1is created
+Cake Object 2is created
+Cake Object 3is created
+Cake Object 3is disposed
+Cake Object 2is disposed
+```
+
+## Java 流(Stream)、文件(File)和IO
+
+Java.io 包几乎包含了所有操作输入、输出需要的类。所有这些流类代表了输入源和输出目标
+
+### 一、读取控制台输入
+
+**从控制台读取多字符输入：**
+
+```java
+//使用 BufferedReader 在控制台读取字符
+ 
+import java.io.*;
+ 
+public class BRRead {
+    public static void main(String[] args) throws IOException {
+        char c;
+        // 使用 System.in 创建 BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("输入字符, 按下 'q' 键退出。");
+        // 读取字符
+        do {
+            c = (char) br.read();
+            System.out.println(c);
+        } while (c != 'q');
+    }
+}
+```
+
+**从控制台读取字符串：**
+
+```java
+//从控制台读取字符串：
+String str;
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+try {
+    System.out.println("输入字符，按下\"end\"键退出");
+    //读取字符串
+    do {
+        str = br.readLine();
+        System.out.println(str);
+    }while (!"end".equals(str));
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+### 二、控制台输出
+
+**控制台输出单个字符：**
+
+```java
+//write
+System.out.write('A');
+System.out.write('\n');
+----
+A
+    
+```
+
+### 三、读写文件
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/iostream2xx.png)
+
+#### FileInputStream
+
+该流用于从文件读取数据，它的对象可以用关键字 new 来创建。
+
+有多种构造方法可用来创建对象。
+
+可以使用字符串类型的文件名来创建一个输入流对象来读取文件：
+
+```java
+//创建方式1
+InputStream f = new FileInputStream("C:/java/hello");
+//创建方式2
+File f = new File("C:/java/hello");
+InputStream in = new FileInputStream(f);
+```
+
+#### FileOutputStream
+
+该类用来创建一个文件并向文件中写数据。
+
+如果该流在打开文件进行输出前，目标文件不存在，那么该流会创建该文件。
+
+有两个构造方法可以用来创建 FileOutputStream 对象。
+
+使用字符串类型的文件名来创建一个输出流对象：
+
+```java
+//创建方式1
+OutputStream f = new FileOutputStream("C:/java/hello");
+//创建方式2
+File f = new File("C:/java/hello");
+OutputStream fOut = new FileOutputStream(f);
+```
+

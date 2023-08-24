@@ -41,7 +41,8 @@ public class Dog extends Animal{
 
     @Override
     public void eat() {
-        super.eat();
+        //super.eat();
+        System.out.println("小狗在吃骨头");
     }
 
     public void housekeeping(){
@@ -51,6 +52,17 @@ public class Dog extends Animal{
     public static void staticMethod(){
         System.out.println("这是静态方法");
     }
+
+    protected void protectedFuction() {
+        System.out.println("狗的普通的保护方法");
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        System.out.println("调用finalize方法");
+    }
+
 //
 //    //匿名内部类
 //    public static class AnonymousInnerDog{

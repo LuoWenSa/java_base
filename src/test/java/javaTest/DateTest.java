@@ -29,8 +29,8 @@ public class DateTest {
         //1.date --> String
         System.out.println("simpleDateFormat.format(d) = " + simpleDateFormat.format(d));
         try {
-            //1.String --> date
-            System.out.println("simpleDateFormat.parse() = " + simpleDateFormat.parse("2023-0513 09:53:23"));
+            //2.String --> date
+            System.out.println("simpleDateFormat.parse() = " + simpleDateFormat.parse("2023-05-13 09:53:23"));
         } catch (ParseException e) {
             System.out.println("抛出异常后。。。");
             throw new RuntimeException(e);

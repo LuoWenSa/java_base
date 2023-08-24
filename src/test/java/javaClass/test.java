@@ -1,5 +1,6 @@
 package javaClass;
 
+import study.dto.AbstractClass;
 import study.dto.Animal;
 import study.dto.Cat;
 import study.dto.Dog;
@@ -30,8 +31,13 @@ public class test {
         //可以通过类名调用静态方法 ,不能通过new对象的方式访问
         Dog.staticMethod();
 
-        Cat c = new Cat();
+        //Cat c = new Cat();
+        //子类被父类引用，如果子类重写实现了父类的方法，则父类引用是用的子类重写的方法
+        Animal animal = new Dog();
+        animal.eat();
+        animal.speak();
 
+        //todo java 继承 父类 protected 方法
     }
 
 }
