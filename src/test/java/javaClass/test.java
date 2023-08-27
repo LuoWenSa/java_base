@@ -10,7 +10,7 @@ import study.dto.Dog;
  * @author: Ray
  * @date: 2023年07月03日 16:06
  */
-public class test {
+public class test extends Animal{
     public static void main(String[] args) {
         //Animal a =  new Animal();
 
@@ -37,7 +37,6 @@ public class test {
         animal.eat();
         animal.speak();
 
-        //todo java 继承 父类 protected 方法
     }
 
 }

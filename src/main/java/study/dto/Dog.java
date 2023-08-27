@@ -35,11 +35,6 @@ public class Dog extends Animal{
     }
 
     @Override
-    public void speak() {
-        super.speak();
-    }
-
-    @Override
     public void eat() {
         //super.eat();
         System.out.println("小狗在吃骨头");

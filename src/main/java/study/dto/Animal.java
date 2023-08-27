@@ -17,6 +17,11 @@ public class Animal {
         System.out.println("I am public eating!");
     }
 
+    //测试public
+    public void eatPublic(){
+        System.out.println("I am public eating!");
+    }
+
     //测试private
     private void eatp(){
         System.out.println("I am private eating!");

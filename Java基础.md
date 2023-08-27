@@ -853,7 +853,23 @@ A
 
 ![](https://www.runoob.com/wp-content/uploads/2013/12/iostream2xx.png)
 
-#### FileInputStream
+#### 字节流和字符流的区别
+
+**字节流和字符流是I/O流的两种类型，它们在处理数据时有以下几点区别：**
+
+　　**1.处理单元不同**
+
+　　字节流以字节为处理单元，而字符流以字符为处理单元。字节流主要用于处理二进制数据，而字符流主要用于处理文本数据。
+
+　　**2.处理速度不同**
+
+　　字节流读取和写入的速度比字符流快，因为字节流处理的是底层的字节数据，而字符流需要先将字节数据转换为字符数据，再进行处理。
+
+　　**3.数据表现形式不同**
+
+　　字节流以字节的形式读取和写入数据，可以处理所有类型的数据，包括图像、音频和视频等。而字符流则以字符的形式读取和写入数据，只能处理文本数据。
+
+#### FileInputStream(读)
 
 该流用于从文件读取数据，它的对象可以用关键字 new 来创建。
 
@@ -869,7 +885,7 @@ File f = new File("C:/java/hello");
 InputStream in = new FileInputStream(f);
 ```
 
-#### FileOutputStream
+#### FileOutputStream(写)
 
 该类用来创建一个文件并向文件中写数据。
 
@@ -885,5 +901,118 @@ OutputStream f = new FileOutputStream("C:/java/hello");
 //创建方式2
 File f = new File("C:/java/hello");
 OutputStream fOut = new FileOutputStream(f);
+```
+
+#### 例子
+
+```java
+byte[] bWrite = {11, 21, 3, 40, 5};
+try {
+    //把给定的数字以二进制形式写进该文件
+    OutputStream os = new FileOutputStream("F:/666/outDemo.txt");
+    for (int i = 0; i < bWrite.length; i++) {
+        os.write(bWrite[i]);
+    }
+    os.close();
+
+    //读文件到InputStream
+    InputStream is = new FileInputStream("F:/666/outDemo.txt");
+    int size = is.available();
+
+    //把读到的文件一个字符一个字符地打印到控制台
+    for(int i = 0; i < size; i++){
+        System.out.print((char) is.read()+" ");
+    }
+    is.close();
+
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+缺点：二进制写入，可能存在乱码
+
+#### 解决乱码问题的例子
+
+```java
+try {
+    File file = new File("F:/666/outDemo.txt");
+
+    FileOutputStream fop = new FileOutputStream(file);
+    OutputStreamWriter writer = new OutputStreamWriter(fop, StandardCharsets.UTF_8);
+    //写入缓冲区
+    writer.append("中文输入");
+    //换行 todo 为什么这么写
+    writer.append("\r\n");
+    writer.append("English");
+    //关闭写入流，同时会把缓冲区内容写入文件
+    writer.close();
+    //关闭输出流，释放系统资源
+    fop.close();
+
+    FileInputStream fip = new FileInputStream(file);
+    InputStreamReader reader = new InputStreamReader(fip,StandardCharsets.UTF_8);
+    StringBuffer sb = new StringBuffer();
+    while (reader.ready()){
+        sb.append((char) reader.read());
+    }
+
+    System.out.println(sb);
+    //关闭读取流
+    reader.close();
+    //关闭输入流,释放系统资源
+    fip.close();
+
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+### 四、Java中的目录
+
+#### 创建目录
+
+```java
+//创建文件夹
+File file = new File("F:/666/555");
+boolean mkdirFlag = file.mkdir();
+System.out.println("mkdirFlag = " + mkdirFlag);
+```
+
+#### 判断是否为目录
+
+```java
+String dirname = "F:/666";
+File f1 = new File(dirname);
+if (f1.isDirectory()) {  //关键词isDirectory
+    System.out.println("目录 " + dirname);
+    String[] s = f1.list();
+    for (int i = 0; i < s.length; i++) {
+        File f = new File(dirname + "/" + s[i]);
+        if (f.isDirectory()) {
+            System.out.println(s[i] + " 是一个目录");
+        } else {
+            System.out.println(s[i] + " 是一个文件");
+        }
+    }
+} else {
+    System.out.println(dirname + " 不是一个目录");
+}
+```
+
+#### 删除目录或文件
+
+```java
+//删除F盘下666目录下所有的文件夹
+String dirname = "F:/666";
+File folder = new File(dirname);
+File[] files = folder.listFiles();
+if(files != null && files.length != 0){
+    for (File f : files) {
+        if(f.isDirectory()){
+            System.out.println("f.delete() = " + f.delete()); //关键词：delete，如果要删除目录，需要目录下没有文件
+        }
+    }
+}
 ```
 

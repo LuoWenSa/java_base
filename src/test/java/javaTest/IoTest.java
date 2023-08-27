@@ -59,8 +59,15 @@ public class IoTest {
             }
             os.close();
 
+            //读文件到InputStream
             InputStream is = new FileInputStream("F:/666/outDemo.txt");
             int size = is.available();
+
+            //把读到的文件一个字符一个字符地打印到控制台
+            for(int i = 0; i < size; i++){
+                System.out.print((char) is.read()+" ");
+            }
+            is.close();
 
         } catch (IOException e) {
             e.printStackTrace();
