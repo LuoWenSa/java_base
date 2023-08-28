@@ -1016,3 +1016,154 @@ if(files != null && files.length != 0){
 }
 ```
 
+## Java Scanner 类
+
+```java
+Scanner s = new Scanner(System.in);
+
+System.out.println("请输入一个字符串 nextLine():");
+String str1 = s.nextLine();
+System.out.println("str1 = " + str1);
+
+System.out.println("请输入一个字符串 next():");
+String str2 = s.next();
+System.out.println("str2 = " + str2);
+
+---------------------------
+请输入一个字符串 nextLine():
+Hello World
+str1 = Hello World
+请输入一个字符串 next():
+Hello World
+str2 = Hello
+```
+
+**next() 与 nextLine() 区别**
+
+**next()**:
+
+- 1、一定要读取到有效字符后才可以结束输入。
+- 2、对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。
+- 3、只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符。
+- next() 不能得到带有空格的字符串。
+
+**nextLine()**：
+
+- 1、以Enter为结束符,也就是说 nextLine()方法返回的是输入回车之前的所有字符。
+- 2、可以获得空白。
+
+## Java 异常处理
+
+https://www.runoob.com/java/java-exceptions.html
+
+### 一、异常类别
+
+- **检查性异常：**最具代表的检查性异常是用户错误或问题引起的异常，这是程序员无法预见的。例如要打开一个不存在文件时，一个异常就发生了（IOException），这些异常在编译时不能被简单地忽略。**除了RunTimeException以及所有子类之外的所有异常**
+- **运行时异常：** <font color="#dd0000">运行时</font>异常是可能被程序员避免的异常。与检查性异常相反，运行时异常可以在编译时被忽略。
+- **错误：** Error类代表了<font color="#dd0000">编译和系统的错误</font>，不允许捕获，错误不是异常，而是脱离程序员控制的问题。错误在代码中通常被忽略。例如，当栈溢出时，一个错误就发生了，它们在编译也检查不到的。
+
+![](https://www.runoob.com/wp-content/uploads/2013/12/exception-hierarchy.png)
+
+**例子**：
+
+```java
+try {
+    Integer a = 4/0; 
+} catch (Exception e) {
+    System.out.println("e.getMessage() = " + e.getMessage());
+    System.out.println("e.getCause() = " + e.getCause());
+    e.printStackTrace(); //详细
+    System.out.println("Exception thrown  :"+ e); //简略
+}
+-------------------------------------------------------------
+e.getMessage() = / by zero
+e.getCause() = null
+Exception thrown  :java.lang.ArithmeticException: / by zero
+java.lang.ArithmeticException: / by zero
+	at javaTest.ExceptionTest.main(ExceptionTest.java:10)    
+```
+
+**catch异常后，程序会继续执行，不会停止：**
+
+```java
+try {
+    int[] a = new int[2];
+    System.out.println("a[2] = " + a[2]);
+}catch (RuntimeException e){
+    System.out.println("catch到错误，并进行打印：");
+    e.printStackTrace();
+}
+System.out.println("程序继续向下执行。。。");
+-----------------------------------------------------------
+catch到错误，并进行打印：
+程序继续向下执行。。。
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at javaTest.ExceptionTest.main(ExceptionTest.java:21)
+```
+
+### 二、多重捕获块
+
+```java
+try{
+   // 程序代码
+}catch(异常类型1 异常的变量名1){
+  // 程序代码
+}catch(异常类型2 异常的变量名2){
+  // 程序代码
+}catch(异常类型3 异常的变量名3){
+  // 程序代码
+}
+```
+
+### 三、throws/throw 关键字
+
+**throw** 关键字用于在代码中<font color="#dd0000">抛出</font>异常
+
+```java
+if (num < 0) {
+    throw new IllegalArgumentException("Number must be positive"); //方法立刻结束执行
+}
+```
+
+**throws** 关键字用于在方法<font color="#dd0000">声明</font>中指定可能会抛出的异常类型。**在调用该方法的代码中，必须捕获或声明处理 IOException 异常**
+
+```java
+public static void main(String[] args) throws RuntimeException, IOException {
+    
+}
+```
+
+### 四、finally关键字
+
+finally 关键字用来创建在 try 代码块后面执行的代码块。
+
+无论是否发生异常，finally 代码块中的代码总会被执行。
+
+在 finally 代码块中，可以运行清理类型等收尾善后性质的语句。
+
+- 在 try/catch 后面添加 finally 块并非强制性要求的。
+
+finally 代码块出现在 catch 代码块最后，语法如下：
+
+```java
+try {
+    int[] a = new int[2];
+    System.out.println("a[2] = " + a[2]);
+}catch (RuntimeException e){
+    System.out.println("catch到错误，并进行打印：");
+    e.printStackTrace();
+}finally {
+    System.out.println("执行finally方法");
+}
+System.out.println("程序继续向下执行。。。");
+----------------------------------------------------------
+catch到错误，并进行打印：
+执行finally方法
+程序继续向下执行。。。
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at javaTest.ExceptionTest.main(ExceptionTest.java:23)
+```
+
+### 五、try-with-resources 处理多个资源
+
+try-with-resources 语句中可以声明多个资源，方法是使用分号 **;** 分隔各个资源，并且可以在语句执行完毕后确保每个资源都被自动关闭， 不用**finally** 来关闭资源，减少代码

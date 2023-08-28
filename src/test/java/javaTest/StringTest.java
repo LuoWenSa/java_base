@@ -16,5 +16,9 @@ public class StringTest {
 
         String s2 = "wor";
         System.out.println(s1.substring(6, 9));
+
+        //取右边三位
+        String s3 = "SCJH20230808002003";
+        System.out.println("s3.substring(s3.length()-3) = " + s3.substring(s3.length() - 3));
     }
 }

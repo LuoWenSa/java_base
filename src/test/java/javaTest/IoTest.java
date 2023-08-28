@@ -53,14 +53,14 @@ public class IoTest {
         byte[] bWrite = {11, 21, 3, 40, 5};
         try {
             //把给定的数字以二进制形式写进该文件
-            OutputStream os = new FileOutputStream("F:/666/outDemo.txt");
+            OutputStream os = new FileOutputStream("E:/666/outDemo.txt");
             for (int i = 0; i < bWrite.length; i++) {
                 os.write(bWrite[i]);
             }
             os.close();
 
             //读文件到InputStream
-            InputStream is = new FileInputStream("F:/666/outDemo.txt");
+            InputStream is = new FileInputStream("E:/666/outDemo.txt");
             int size = is.available();
 
             //把读到的文件一个字符一个字符地打印到控制台
