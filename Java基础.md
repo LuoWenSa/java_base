@@ -1018,6 +1018,8 @@ if(files != null && files.length != 0){
 
 ## Java Scanner 类
 
+**作用**：通过 Scanner 类的 next() 与 nextLine() 方法获取输入的字符串，在读取前我们一般需要 使用 hasNext 与 hasNextLine 判断是否还有输入的数据
+
 ```java
 Scanner s = new Scanner(System.in);
 
@@ -1167,3 +1169,40 @@ java.lang.ArrayIndexOutOfBoundsException: 2
 ### 五、try-with-resources 处理多个资源
 
 try-with-resources 语句中可以声明多个资源，方法是使用分号 **;** 分隔各个资源，并且可以在语句执行完毕后确保每个资源都被自动关闭， 不用**finally** 来关闭资源，减少代码
+
+```java
+//try-with-resources 处理多个资源
+//使用 Scanner 对象从 inDemo.txt 文件中读取一行并每写一行，换行将其写入新的 outDemo.txt 文件中
+try(Scanner scanner = new Scanner(new File("F:\\666\\inDemo.txt"));
+    PrintWriter writer = new PrintWriter(new File("F:\\666\\outDemo.txt"))) {
+    while (scanner.hasNext()){
+        writer.println(scanner.nextLine());
+    }
+}catch (IOException e){
+    System.out.println("catch到异常。。。");
+    e.printStackTrace();
+}
+```
+
+### 六、声明自定义异常
+
+在 Java 中你可以自定义异常。编写自己的异常类时需要记住下面的几点。
+
+- 所有异常都必须是 Throwable 的子类。
+- 如果希望写一个<font color="#dd0000">检查性异常类</font>，则需要继承 Exception 类。
+- 如果你想写一个<font color="#dd0000">运行时异常类</font>，那么需要继承 RuntimeException 类。
+
+```java
+//定义异常类
+class MyException extends Exception{
+}
+```
+
+例子见https://www.runoob.com/java/java-exceptions.html，已实现
+
+# Java 面向对象
+
+## Java 继承
+
+https://www.runoob.com/java/java-inheritance.html
+

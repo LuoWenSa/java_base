@@ -11,8 +11,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Dog extends Animal{
 
     Integer age;
@@ -25,6 +23,14 @@ public class Dog extends Animal{
     //类变量
     public static Integer age1;
     static Integer age1np;
+
+    public Dog(){
+
+    }
+    public Dog(String aniId, String aniPId){
+        aniId = aniId;
+        aniPId = aniPId;
+    }
 
     public Integer getAge1np() {
         return age1np;

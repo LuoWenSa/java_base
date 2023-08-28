@@ -9,6 +9,15 @@ import lombok.Data;
 public class Animal {
 
     public String aniId;
+    private String aniPId;
+
+    public Animal(){
+
+    }
+    public Animal(String aniId, String aniPId){
+        this.aniId = aniId;
+        this.aniPId = aniPId;
+    }
 
     public void speak(){
         System.out.println("say：I am animal!");

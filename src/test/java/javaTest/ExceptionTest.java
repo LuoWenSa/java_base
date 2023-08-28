@@ -1,6 +1,9 @@
 package javaTest;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  * @author: Ray
@@ -34,7 +37,16 @@ public class ExceptionTest {
 //            throw new RuntimeException("n can not less then four");
 //        }
 
-//try-with-resources 处理多个资源
+        //try-with-resources 处理多个资源
+        try(Scanner scanner = new Scanner(new File("F:\\666\\inDemo.txt"));
+            PrintWriter writer = new PrintWriter(new File("F:\\666\\outDemo.txt"))) {
+            while (scanner.hasNext()){
+                writer.println(scanner.nextLine());
+            }
+        }catch (IOException e){
+            System.out.println("catch到异常。。。");
+            e.printStackTrace();
+        }
 
 
     }
