@@ -25,11 +25,10 @@ public class Dog extends Animal{
     static Integer age1np;
 
     public Dog(){
-
+        
     }
     public Dog(String aniId, String aniPId){
-        aniId = aniId;
-        aniPId = aniPId;
+        super(aniId,aniPId);
     }
 
     public Integer getAge1np() {

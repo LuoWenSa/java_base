@@ -6,7 +6,7 @@ package study.dto;
  */
 public abstract class AbstractClass {
     private String pName;
-    public String name;
+    public static String name;
 
     public void fuction(){
         System.out.println("使用抽象类中的普通方法");

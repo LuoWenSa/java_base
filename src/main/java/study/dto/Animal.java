@@ -9,10 +9,10 @@ import lombok.Data;
 public class Animal {
 
     public String aniId;
-    private String aniPId;
-
+    public String aniPId;
+    public final String finalId = "AnimalId";
     public Animal(){
-
+        System.out.println("Animal的无参构造方法");
     }
     public Animal(String aniId, String aniPId){
         this.aniId = aniId;

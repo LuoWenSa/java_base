@@ -15,7 +15,6 @@ public class abstractTest {
         abstractClass.fuction();
         //1.抽象类可以被实例化，且实例化的对象只能调用普通方法
 
-
         Cat c = new Cat();
         c.useProtectedFunction();
 

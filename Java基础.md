@@ -34,14 +34,18 @@ https://www.runoob.com/java/java-basic-syntax.html
 - 非访问控制修饰符 : final, abstract, static, synchronized
 
   **static** 修饰符，用来修饰类方法和类变量
-  **final** 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的
+  **final** 修饰符，用来修饰类、方法和变量，final 修饰的类不能够被继承，修饰的方法不能被继承类重新定义，修饰的变量为常量，是不可修改的。<font color="#dd0000">初始化得赋值声明</font>
+
+  ```java
+  public final String finalId = "AnimalId";  //初始化得赋值声明
+  ```
 
   **abstract** 修饰符，用来创建抽象类和抽象方法。抽象类不能用来实例化对象，声明抽象类的**唯一目的**是为了<font color="#dd0000">将来对该类进行扩充</font>。
 
   一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
-
+  
   抽象类可以包含抽象方法和非抽象方法。
-
+  
   **synchronized** 和 **volatile** 修饰符，主要用于线程的编程。synchronized 关键字声明的方法同一时间只能被一个线程访问。(*注：transient 修饰符修饰的变量不进行序列化*)
 
 ### 四、Java 变量
@@ -362,7 +366,17 @@ b = (a == 1) ? 20 : 30;
 
 该运算符用于操作对象实例，检查该对象是否是一个特定类型（类类型或接口类型）
 
-> 用了一下感觉没什么鸟用？
+用于多态比较多：
+
+```java
+static void show(Animal a){
+    if(a instanceof Dog){
+        a.eat();
+    }else if(a instanceof Gorilla){
+        a.eat();
+    }
+}
+```
 
 ### 八、Java运算符优先级
 
@@ -1206,3 +1220,160 @@ class MyException extends Exception{
 
 https://www.runoob.com/java/java-inheritance.html
 
+### 一、super关键字
+
+使用super调用父类中被隐藏的成员变量以及方法，比如super.x，super.f()
+使用super调用父类中的构造方法
+子类不继承父类的构造方法，使用super调用父类的构造方法，且**super必须是子类构造方法中的头一条语句**。即子类继承父类，**生成对象时必须先调用父类的构造方法**，父类得有一个不带参数得构造方法，方便子类重写。
+
+- super关键字必须是子类构造方法中的第一条语句
+
+- 子类不继承父类的构造方法！！！
+
+  ![image-20230829215741820](image-20230829215741820.png)
+
+### 二、implements关键字
+
+使用 implements 关键字可以变相的使java具有多继承的特性，使用范围为类继承接口的情况，可以同时继承多个接口
+
+```java
+public interface A {
+    public void eat();
+    public void sleep();
+}
+ 
+public interface B {
+    public void show();
+}
+ 
+public class C implements A,B {
+}
+```
+
+### 三、final 关键字
+
+使用 final 关键字声明类，
+
+- 把类定义定义为最终类，不能被继承
+
+- 用于修饰方法，该方法不能被子类重写
+
+- 可以在子类中用super读到final修饰的属性或方法
+
+### 四、构造器
+
+子类是不继承父类的构造器（构造方法或者构造函数）的，它只是调用（隐式或显式）。如果父类的构造器带有参数，则必须在子类的构造器中显式地通过 **super** 关键字调用父类的构造器并配以适当的参数列表。
+
+- 如果父类构造器没有参数，则在子类的构造器中不需要使用 **super** 关键字调用父类构造器，系统会自动调用父类的无参构造器。
+
+## Java 重写(Override)与重载(Overload)
+
+https://www.runoob.com/java/java-override-overload.html
+
+### 重写(Override)
+
+重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。**即外壳不变，核心重写！**
+
+重写的好处在于子类可以根据需要，定义特定于自己的行为。 也就是说<font color="#dd0000">子类能够根据需要实现父类的方法</font>。
+
+- 重写方法不能抛出新的检查异常或者比被重写方法申明更加宽泛的异常。例如： 父类的一个方法申明了一个检查异常 IOException，但是在重写这个方法的时候不能抛出 Exception 异常，因为 Exception 是 IOException 的父类，抛出 IOException 异常或者 IOException 的子类异常。
+
+### 方法的重写规则
+
+- 参数列表与被重写方法的参数列表必须完全相同。
+- 返回类型与被重写方法的返回类型可以不相同，但是必须是父类返回值的派生类（java5 及更早版本返回类型要一样，java7 及更高版本可以不同）。
+- 访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为 public，那么在子类中重写该方法就不能声明为 protected。
+- 父类的成员方法只能被它的子类重写。
+- 声明为 final 的方法不能被重写。
+- 声明为 static 的方法不能被重写，但是能够被再次声明。
+- 子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为 private 和 final 的方法。
+- 子类和父类不在同一个包中，那么子类只能够重写父类的声明为 public 和 protected 的非 final 方法。
+- 重写的方法能够抛出任何非强制异常，无论被重写的方法是否抛出异常。但是，重写的方法不能抛出新的强制性异常，或者比被重写方法声明的更广泛的强制性异常，反之则可以。
+- 构造方法不能被重写。
+- 如果不能继承一个类，则不能重写该类的方法。
+
+### Super 关键字的使用
+
+```java
+class Animal{
+   public void move(){
+      System.out.println("动物可以移动");
+   }
+}
+ 
+class Dog extends Animal{
+   public void move(){
+      super.move(); // 应用super类的方法
+      System.out.println("狗可以跑和走");
+   }
+}
+ 
+public class TestDog{
+   public static void main(String args[]){
+ 
+      Animal b = new Dog(); // Dog 对象
+      b.move(); //执行 Dog类的方法
+ 
+   }
+}
+
+-------------------------
+动物可以移动
+狗可以跑和走
+```
+
+### 重载(Overload)
+
+- 重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。
+
+- 每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。
+
+- 最常用的地方就是构造器的重载。
+
+![img](overloading-vs-overriding.png)
+
+## Java 多态
+
+https://www.runoob.com/java/java-polymorphism.html
+
+- 类内部之间得多态：方法重载(Overload)
+
+- 类之间的多态：方法重写(Override)
+
+  **例：Parent p = new Child();**
+  ![img](2DAC601E-70D8-4B3C-86CC-7E4972FC2466.jpg)
+
+```java
+public static void main(String[] args) {
+    show(new Dog());
+    show(new Gorilla());
+}
+
+static void show(Animal a){
+    if(a instanceof Dog){
+        a.eat();
+    }else if(a instanceof Gorilla){
+        a.eat();
+    }
+}
+-----------
+小狗在吃骨头
+猩猩在吃香蕉
+```
+
+## Java 抽象类
+
+**使用场景：**
+
+- **共享代码实现**，多个相关的类需要共享相同的代码实现
+- **类的扩展性**，在未来的版本中为类提供新的方法或属性，而不希望破坏已有的实现类
+- **需要访问非公共成员**，抽象类可以定义非公共(protected 或默认可见性)的成员变量和方法，并且这些成员可以在子类中直接访问。接口只能定义公共的方法，所有成员都是公共的，没有访问限制。
+- 
+
+**概念**：如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类
+
+- <font color="#dd0000">抽象类不能实例化对象</font>，**类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样**。
+
+- 由于抽象类不能实例化对象，所以<font color="#dd0000">抽象类必须被继承</font>，才能被使用
+
+- 在 Java 中抽象类表示的是一种继承关系，<font color="#dd0000">一个类只能继承一个抽象类，而一个类却可以实现多个接口</font>。
