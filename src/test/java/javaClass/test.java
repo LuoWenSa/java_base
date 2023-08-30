@@ -1,8 +1,6 @@
 package javaClass;
 
-import study.dto.AbstractClass;
 import study.dto.Animal;
-import study.dto.Cat;
 import study.dto.Dog;
 
 

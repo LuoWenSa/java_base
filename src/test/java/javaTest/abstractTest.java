@@ -1,6 +1,6 @@
 package javaTest;
 
-import study.dto.AbstractClass;
+import study.abstracts.AbstractClass;
 import study.dto.Cat;
 
 public class abstractTest {

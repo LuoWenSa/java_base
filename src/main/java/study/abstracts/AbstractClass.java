@@ -1,4 +1,4 @@
-package study.dto;
+package study.abstracts;
 
 /**
  * @author: Ray

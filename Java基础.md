@@ -1341,7 +1341,8 @@ https://www.runoob.com/java/java-polymorphism.html
 - 类之间的多态：方法重写(Override)
 
   **例：Parent p = new Child();**
-  ![img](2DAC601E-70D8-4B3C-86CC-7E4972FC2466.jpg)
+  
+  ![img](Java基础.assets/2DAC601E-70D8-4B3C-86CC-7E4972FC2466.jpg)
 
 ```java
 public static void main(String[] args) {
@@ -1377,3 +1378,34 @@ static void show(Animal a){
 - 由于抽象类不能实例化对象，所以<font color="#dd0000">抽象类必须被继承</font>，才能被使用
 
 - 在 Java 中抽象类表示的是一种继承关系，<font color="#dd0000">一个类只能继承一个抽象类，而一个类却可以实现多个接口</font>。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Java 包(package)
+
+https://www.runoob.com/java/java-package.html
+
+**注意，使用通配符 * 导入整个包时，只会导入包中的类，而不会导入包中的子包**
+
+```java
+import com.runoob.mypackage.*;    //导入 com.runoob.mypackage 包中的所有类
+```
+
+**通常，一个公司使用它互联网域名的颠倒形式来作为它的包名**.例如：互联网域名是 runoob.com，所有的包名都以 com.runoob 开头。包名中的每一个部分对应一个子目录。
+
