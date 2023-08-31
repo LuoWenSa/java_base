@@ -7,9 +7,14 @@ import lombok.Setter;
 @Setter
 public class Gorilla extends Animal{
     private Integer age;
-    private Integer name;
+    private String name;
     public Gorilla(){
         System.out.println("Gorilla的无参构造方法");
+    }
+
+    public Gorilla(String name){
+        System.out.println("Gorilla的有参构造方法");
+        this.name = name;
     }
 
     @Override

@@ -1371,6 +1371,8 @@ static void show(Animal a){
 - **需要访问非公共成员**，抽象类可以定义非公共(protected 或默认可见性)的成员变量和方法，并且这些成员可以在子类中直接访问。接口只能定义公共的方法，所有成员都是公共的，没有访问限制。
 - 
 
+### 抽象类
+
 **概念**：如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类
 
 - <font color="#dd0000">抽象类不能实例化对象</font>，**类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样**。
@@ -1381,11 +1383,23 @@ static void show(Animal a){
 
 
 
+### 抽象方法
 
+- 如果一个类包含抽象方法，那么该类必须是抽象类。
+- 任何子类**必须重写父类的抽象方法**，或者声明自身为抽象类。
 
-
-
-
+```java
+public abstract class Employee
+{
+   private String name;
+   private String address;
+   private int number;
+   
+   public abstract double computePay();  //抽象方法
+   
+   //其余代码
+}
+```
 
 
 

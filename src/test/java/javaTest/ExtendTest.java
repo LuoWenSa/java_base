@@ -10,6 +10,6 @@ public class ExtendTest {
 //        Dog dog = new Dog("24","15");
 //        System.out.println("dog.aniId = " + dog.aniId);
 //        System.out.println("dog.aniPId = " + dog.aniPId);
-        Gorilla gorilla = new Gorilla();
+        Gorilla gorilla = new Gorilla("小黑");
     }
 }
