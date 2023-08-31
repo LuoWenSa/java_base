@@ -1,6 +1,7 @@
 package javaTest;
 
 import study.dto.Animal;
+import study.dto.Chimpanzee;
 import study.dto.Dog;
 import study.dto.Gorilla;
 
@@ -10,6 +11,7 @@ public class ExtendTest {
 //        Dog dog = new Dog("24","15");
 //        System.out.println("dog.aniId = " + dog.aniId);
 //        System.out.println("dog.aniPId = " + dog.aniPId);
-        Gorilla gorilla = new Gorilla("小黑");
+        //Gorilla gorilla = new Gorilla("小黑");
+        Chimpanzee chimpanzee = new Chimpanzee();
     }
 }

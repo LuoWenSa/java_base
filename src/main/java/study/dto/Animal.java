@@ -2,11 +2,13 @@ package study.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author: Ray
  * @date: 2023年06月30日 16:55
  */
-public class Animal {
+public class Animal implements Serializable {
 
     public String aniId;
     public String aniPId;

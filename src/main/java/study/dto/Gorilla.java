@@ -2,10 +2,11 @@ package study.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import study.interfaces.TagInterface;
 
 @Getter
 @Setter
-public class Gorilla extends Animal{
+public class Gorilla extends Animal implements TagInterface {
     private Integer age;
     private String name;
     public Gorilla(){

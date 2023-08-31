@@ -388,6 +388,34 @@ static void show(Animal a){
 
 switch case 语句：https://www.runoob.com/java/java-switch-case.html
 
+只有break;才会退出，匹配到后等break或default，没有就会继续进入下一个case，并且不论匹配结果，直接输出
+
+```java
+public class Test {
+   public static void main(String args[]){
+      int i = 1;
+      switch(i){
+         case 0:
+            System.out.println("0");
+         case 1:
+            System.out.println("1");
+         case 2:
+            System.out.println("2");
+         case 3:
+            System.out.println("3"); break;
+         default:
+            System.out.println("default");
+      }
+   }
+}
+------------
+1
+2
+3
+```
+
+
+
 ## Java Number & Math 类
 
 https://www.runoob.com/java/java-number.html
@@ -1376,12 +1404,9 @@ static void show(Animal a){
 **概念**：如果一个类中没有包含足够的信息来描绘一个具体的对象，这样的类就是抽象类
 
 - <font color="#dd0000">抽象类不能实例化对象</font>，**类的其它功能依然存在，成员变量、成员方法和构造方法的访问方式和普通类一样**。
-
 - 由于抽象类不能实例化对象，所以<font color="#dd0000">抽象类必须被继承</font>，才能被使用
-
 - 在 Java 中抽象类表示的是一种继承关系，<font color="#dd0000">一个类只能继承一个抽象类，而一个类却可以实现多个接口</font>。
-
-
+- **抽象类可以implement接口，且不必马上实现，但是继承那个抽象类实例化的时候必须要实现接口中的方法**
 
 ### 抽象方法
 
@@ -1401,15 +1426,149 @@ public abstract class Employee
 }
 ```
 
+### 抽象类总结规定
 
+- 1. **抽象类不能被实例化**(初学者很容易犯的错)，如果被实例化，就会报错，编译无法通过。只有抽象类的非抽象子类可以创建对象。
+- 2. 抽象类中不一定包含抽象方法，但是有抽象方法的类必定是抽象类。
+- 3. 抽象类中的抽象方法只是声明，不包含方法体，就是不给出方法的具体实现也就是方法的具体功能。
+- 4. 构造方法，类方法（用 static 修饰的方法）不能声明为抽象方法。
+- 5. 抽象类的子类必须给出抽象类中的抽象方法的具体实现，除非该子类也是抽象类。
 
+## Java 接口
 
+**关键字： implement**
 
+- **接口并不是类**。类描述对象的属性和方法。接口则包含类要实现的方法。
 
+- 除非实现接口的类是抽象类，否则该类要定义接口中的所有方法。
 
+- <font color="#dd0000">接口无法被实例化，但是可以被实现。</font>
 
+- 一个实现接口的类，必须实现接口内所描述的所有方法，否则就必须声明为抽象类。
 
+- 接口类型可用来声明一个变量，他们可以成为一个空指针，或是被绑定在一个以此接口实现的对象。
+  例：
 
+  ```java
+  @Autowired
+  private IJinhuanOutStoreService outStoreService;
+  ```
+
+### 版本附加信息
+
+- **JDK1.7开始支持接口中存在default方法和static方法，接口中的成员变量默认且只能是public static final的，加这几个访问修饰符是多余的**
+
+- **注**：JDK 1.8 以后，接口里可以有静态方法和方法体了。
+
+- **注**：JDK 1.8 以后，接口允许包含具体实现的方法，该方法称为"默认方法"，默认方法使用 default 关键字修饰。更多内容可参考 [Java 8 默认方法](https://www.runoob.com/java/java8-default-methods.html)。
+
+- **注**：JDK 1.9 以后，允许将方法定义为 private，使得某些复用的代码不会把方法暴露出去。更多内容可参考 [Java 9 私有接口方法](https://www.runoob.com/java/java9-private-interface-methods.html)。
+
+### 接口的声明
+
+```java
+[可见度] interface 接口名称 [extends 其他的接口名(可以多个)] {
+        // 声明变量
+        // 抽象方法,只能是public修饰
+}
+```
+
+<font color="#dd0000">接口中的方法都是公有(public)的。</font>
+
+### 标记接口
+
+**没有任何方法的接口**被称为标记接口。
+
+<font color="#dd0000">比如通过implement Serializable实现类的序列化</font>
+
+标记接口主要用于以下两种目的：
+
+```java
+package java.util;
+public interface EventListener
+{}
+```
+
+- **建立一个公共的父接口：**
+
+  正如EventListener接口，这是由几十个其他接口扩展的Java API，你可以使用一个标记接口来建立一组接口的父接口。例如：当一个接口继承了EventListener接口，Java虚拟机(JVM)就知道该接口将要被用于一个事件的代理方案。
+
+- **向一个类添加数据类型：**
+
+  这种情况是标记接口最初的目的，实现标记接口的类不需要定义任何接口方法(因为标记接口根本就没有方法)，但是该类通过多态性变成一个接口类型。
+
+## Java 枚举(enum)
+
+**Java 枚举是一个特殊的类，一般表示一组常量**，比如一年的 4 个季节，一年的 12 个月份，一个星期的 7 天，方向有东南西北等。
+
+例：
+
+```java
+enum Ecolor { 
+    RED, GREEN, YELLOW; 
+} 
+```
+
+### 枚举类遍历：
+
+```java
+for (Ecolor myVar : Ecolor.values()) {
+      System.out.println(myVar);
+}
+```
+
+### 在 switch 中使用枚举类：
+
+```java
+enum Color 
+{ 
+    RED, GREEN, BLUE; 
+} 
+public class MyClass {
+  public static void main(String[] args) {
+    Color myVar = Color.BLUE;
+
+    switch(myVar) {
+      case RED:
+        System.out.println("红色");
+        break;
+      case GREEN:
+         System.out.println("绿色");
+        break;
+      case BLUE:
+        System.out.println("蓝色");
+        break;
+    }
+  }
+}
+```
+
+### values(), ordinal() 和 valueOf() 方法：
+
+enum 定义的枚举类默认**继承了 java.lang.Enum 类，并实现了 java.lang.Serializable 和 java.lang.Comparable 两个接口。**
+
+values(), ordinal() 和 valueOf() 方法位于 java.lang.Enum 类中：
+
+- values() 返回枚举类中所有的值。
+- ordinal()方法可以找到每个枚举常量的索引，就像数组索引一样。
+- valueOf()方法返回指定字符串值的枚举常量。
+
+```java
+Ecolor c = Ecolor.GREEN;
+Ecolor[] ecolors = Ecolor.values(); //values()
+System.out.println("c.ordinal() = " + c.ordinal());  //ordinal()
+System.out.println("Enum.valueOf() = " + Ecolor.valueOf("GREEN"));  //valueOf()
+```
+
+### 枚举类成员
+
+**枚举跟普通类一样可以用自己的变量、方法和构造函数**，
+
+**构造函数只能使用 private 访问修饰符**，所以外部无法调用。
+
+枚举既可以包含具体方法，也可以包含抽象方法。 如果枚举类具有抽象方法，则枚举类的每个实例都必须实现它。
+
+> 枚举类具有抽象方法不是很理解
 
 ## Java 包(package)
 

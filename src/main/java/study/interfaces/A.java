@@ -1,6 +1,6 @@
 package study.interfaces;
 
-public interface A {
-    void eat();
+public interface A extends B,C{
+    void eat(String food);
     void sleep();
 }
