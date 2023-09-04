@@ -2,7 +2,8 @@ package javaDS;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Properties;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Java Properties 类
@@ -21,7 +22,7 @@ public class PropertiesTest {
         try {
             FileInputStream fileInputStream = new FileInputStream(file);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
-            //todo 为什么23行下面写FileOutputStream fileOutputStream =new FileOutputStream(file);会置空E:\666\info.txt文件的内容，
+            // 为什么23行下面写FileOutputStream fileOutputStream =new FileOutputStream(file);会置空E:\666\info.txt文件的内容，
             // 但是为什么prop.load(inputStreamReader);会变化，难道IO流是动态的？源码我看不出来
             //读配置文件
             prop.load(inputStreamReader);

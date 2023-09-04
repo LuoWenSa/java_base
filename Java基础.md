@@ -1677,3 +1677,32 @@ Hashtable不允许存储null值和null键
 > Properties extends Hashtable
 
 Properties 类常用于存储程序的配置信息，例如数据库连接信息、日志输出配置、应用程序设置等。使用Properties类，可以将这些信息存储在一个文本文件中，并在程序中读取这些信息
+
+## Java 集合框架
+
+![img](2243690-9cd9c896e0d512ed.gif)
+
+Java 集合框架主要包括两种类型的容器：
+
+- 一种是集合（Collection），存储一个元素集合。
+
+- 另一种是图（Map），存储键/值对映射。
+
+Collection 接口又有 3 种子类型，List、Set 和 Queue，再下面是一些抽象类，最后是具体实现类，常用的有 [ArrayList](https://www.runoob.com/java/java-arraylist.html)、[LinkedList](https://www.runoob.com/java/java-linkedlist.html)、[HashSet](https://www.runoob.com/java/java-hashset.html)、LinkedHashSet、[HashMap](https://www.runoob.com/java/java-hashmap.html)、LinkedHashMap 等等。所有的集合框架都包含如下内容：
+
+- **接口：**是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象
+
+- **实现（类）：**是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。
+
+- **算法：**是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序，这些算法实现了多态，那是因为相同的方法可以在相似的接口上有着不同的实现。
+
+  ![img](java-coll-2020-11-16.png)
+
+### Set和List的区别
+
+- 1.**Set 接口实例存储的是无序的，不重复的数据。List 接口实例存储的是有序的，可以重复的元素。**
+- 2.Set 检索效率低下，删除和插入效率高，插入和删除不会引起元素位置改变 **<实现类有HashSet,TreeSet>**，**底层是哈希表，数组链表**
+- 3.List 和数组类似，可以动态增长，根据实际存储的数据的长度自动增长 List 的长度。查找元素效率高，插入删除效率低，因为会引起其他元素位置改变 **<实现类有ArrayList,LinkedList,Vector>**,**底层是数组**
+
+<font color="#dd0000">这里说的有序无序指的是：**按照添加的顺序来输出，即为有序，否则为无序。**</font>
+
