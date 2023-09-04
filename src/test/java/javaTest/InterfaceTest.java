@@ -2,6 +2,7 @@ package javaTest;
 
 import study.dto.Chimpanzee;
 import study.dto.Gorilla;
+import study.interfaces.C;
 import study.interfaces.TagInterface;
 
 public class InterfaceTest {

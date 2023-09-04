@@ -5,7 +5,7 @@ public abstract interface B {
     final String finalX = "22";
     static String staticX = "222";
 
-    default void defaultFunction(){
+    default void defaultFunction(){  //实现了B接口的类可以直接调用
         System.out.println("接口中的默认方法");
     }
 

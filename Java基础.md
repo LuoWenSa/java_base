@@ -895,6 +895,38 @@ A
 
 ![](https://www.runoob.com/wp-content/uploads/2013/12/iostream2xx.png)
 
+```java
+//文件流
+FileInputStream            //字节输入流
+FileOutPutStream           //字节输出流
+FileReader                 //字符输入流
+FileWriter                 //字符输出流
+
+//缓冲流
+BufferedInputStream        //字节输入缓冲流
+BufferedOutputStream       //字节输出缓冲流
+BufferedReader             //字符输入缓冲流
+BufferedWriter             //字符输出缓冲流
+
+//序列化流
+ObjectInputStream          
+ObjectOutputStream
+
+//转换流（字符流）  将字节流转换为字符流
+InputStreamReader
+OutputStreamWriter
+
+//数据流
+DataInputStream
+DataOutputStream
+
+//打印流
+PrintWriter
+PrintStream
+```
+
+
+
 #### 字节流和字符流的区别
 
 **字节流和字符流是I/O流的两种类型，它们在处理数据时有以下几点区别：**
@@ -1397,7 +1429,6 @@ static void show(Animal a){
 - **共享代码实现**，多个相关的类需要共享相同的代码实现
 - **类的扩展性**，在未来的版本中为类提供新的方法或属性，而不希望破坏已有的实现类
 - **需要访问非公共成员**，抽象类可以定义非公共(protected 或默认可见性)的成员变量和方法，并且这些成员可以在子类中直接访问。接口只能定义公共的方法，所有成员都是公共的，没有访问限制。
-- 
 
 ### 抽象类
 
@@ -1460,7 +1491,7 @@ public abstract class Employee
 
 - **注**：JDK 1.8 以后，接口里可以有静态方法和方法体了。
 
-- **注**：JDK 1.8 以后，接口允许包含具体实现的方法，该方法称为"默认方法"，默认方法使用 default 关键字修饰。更多内容可参考 [Java 8 默认方法](https://www.runoob.com/java/java8-default-methods.html)。
+- **注**：JDK 1.8 以后，接口允许包含具体实现的方法，该方法称为"默认方法"，默认方法使用 default 关键字修饰。更多内容可参考 [Java 8 默认方法](https://www.runoob.com/java/java8-default-methods.html)。**实现了接口的类可以调用接口中的默认方法**
 
 - **注**：JDK 1.9 以后，允许将方法定义为 private，使得某些复用的代码不会把方法暴露出去。更多内容可参考 [Java 9 私有接口方法](https://www.runoob.com/java/java9-private-interface-methods.html)。
 
@@ -1582,3 +1613,67 @@ import com.runoob.mypackage.*;    //导入 com.runoob.mypackage 包中的所有�
 
 **通常，一个公司使用它互联网域名的颠倒形式来作为它的包名**.例如：互联网域名是 runoob.com，所有的包名都以 com.runoob 开头。包名中的每一个部分对应一个子目录。
 
+# Java 高级教程
+
+## Java 数据结构
+
+https://www.runoob.com/java/java-data-structures.html
+
+### 一、枚举（Enumeration）
+
+枚举（Enumeration）接口虽然它本身不属于数据结构,但它在其他数据结构的范畴里应用很广。 枚举（The Enumeration）接口定义了一种从数据结构中取回连续元素的方式。
+
+例如，枚举定义了一个叫nextElement 的方法，该方法用来得到一个包含多元素的数据结构的下一个元素。
+
+### 二、位集合（BitSet）
+
+位集合类实现了一组可以单独设置和清除的位或标志。
+
+该类在处理一组布尔值的时候非常有用，你只需要给每个值赋值一"位"，然后对位进行适当的设置或清除，就可以对布尔值进行操作了。or，and操作
+
+一个Bitset类创建一种特殊类型的数组来保存位值。BitSet中数组大小会随需要增加。这和位向量（vector of bits）比较类似
+
+### 三、向量（Vector）
+
+> Vector extends AbstractList extends AbstractCollection implements Collection
+
+向量（Vector）类和传统数组非常相似，但是Vector的大小能根据需要动态的变化。Vector 类实现了一个动态数组。和 ArrayList 很相似，但是两者是不同的：
+
+- Vector 是同步访问的。
+- Vector 包含了许多传统的方法，这些方法不属于集合框架。
+
+和数组一样，Vector对象的元素也能通过索引访问。
+
+使用Vector类最主要的好处就是在创建对象的时候不必给对象指定大小，它的大小会根据需要动态的变化。
+
+### 四、栈（Stack）
+
+**栈是Vector的一个子类**，它实现了一个标准的后进先出的栈。
+
+堆栈只定义了默认构造函数，用来创建一个空栈。 堆栈除了包括由Vector定义的所有方法，也定义了自己的一些方法。
+
+### 五、字典（Dictionary）
+
+**Dictionary 类是一个抽象类**，用来存储键/值对，作用和Map类相似。
+
+给出键和值，你就可以将值存储在Dictionary对象中。一旦该值被存储，就可以通过它的键来获取它。所以和Map一样， Dictionary 也可以作为一个键/值对列表。
+
+由于Dictionary类是抽象类，所以它只提供了键映射到值的数据结构，而没有提供特定的实现。
+
+*Dictionary类已经过时了。在实际开发中，你可以[实现Map接口](https://www.runoob.com/java/java-map-interface.html)来获取键/值的存储功能*
+
+### 六、哈希表（Hashtable）
+
+> Hashtable extends Dictionary
+
+它和HashMap类很相似，但是它支持同步，是线程安全的。
+
+像HashMap一样，Hashtable在哈希表中存储键/值对。当使用一个哈希表，要指定用作键的对象，以及要链接到该键的值。
+
+Hashtable不允许存储null值和null键
+
+### 七、属性（Properties）
+
+> Properties extends Hashtable
+
+Properties 类常用于存储程序的配置信息，例如数据库连接信息、日志输出配置、应用程序设置等。使用Properties类，可以将这些信息存储在一个文本文件中，并在程序中读取这些信息
