@@ -1641,6 +1641,7 @@ https://www.runoob.com/java/java-data-structures.html
 
 - Vector 是同步访问的。
 - Vector 包含了许多传统的方法，这些方法不属于集合框架。
+- <font color="#dd0000">Vector是线程安全的</font>
 
 和数组一样，Vector对象的元素也能通过索引访问。
 
@@ -1701,8 +1702,80 @@ Collection 接口又有 3 种子类型，List、Set 和 Queue，再下面是一�
 ### Set和List的区别
 
 - 1.**Set 接口实例存储的是无序的，不重复的数据。List 接口实例存储的是有序的，可以重复的元素。**
-- 2.Set 检索效率低下，删除和插入效率高，插入和删除不会引起元素位置改变 **<实现类有HashSet,TreeSet>**，**底层是哈希表，数组链表**
-- 3.List 和数组类似，可以动态增长，根据实际存储的数据的长度自动增长 List 的长度。查找元素效率高，插入删除效率低，因为会引起其他元素位置改变 **<实现类有ArrayList,LinkedList,Vector>**,**底层是数组**
+- 2.Set 检索效率低下，删除和插入效率高，插入和删除不会引起元素位置改变 **<实现类有HashSet,TreeSet>，底层是哈希表，数组链表**
+- 3.List 和数组类似，可以动态增长，根据实际存储的数据的长度自动增长 List 的长度。查找元素效率高，插入删除效率低，因为会引起其他元素位置改变 **<实现类有ArrayList,LinkedList,Vector>**，**底层是数组**
 
 <font color="#dd0000">这里说的有序无序指的是：**按照添加的顺序来输出，即为有序，否则为无序。**</font>
+
+## List
+
+### ArrayList
+
+**ArrayList 类是一个可以动态修改的数组**，与普通数组的区别就是它是没有固定大小的限制，我们可以添加或删除元素。优：查改，劣：增删
+
+- 有序
+
+- 元素可以重复，可以为null
+
+- 不会自动排序
+
+- 线程不安全
+
+```java
+ArrayList<Integer> numberList = new ArrayList<>();  //初始化
+```
+
+### LinkedList
+
+链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的地址。**LinkedList的底层是双向链表**，优：增删，劣：查改
+
+- 有序
+- 元素可以重复，可以为null
+- 不会自动排序
+- 线程不安全
+
+```java
+LinkedList<Integer> numberList = new LinkedList<>();  //初始化
+```
+
+## Set
+
+### hashSet
+
+**HashSet 基于 HashMap 来实现的**，是一个不允许有重复元素的集合。
+
+- 无序
+- 元素不可以重复，可以为null
+- 不会自动排序
+- 线程不安全
+
+```java
+HashSet<Integer> numberSet = new HashSet<>();  //初始化
+```
+
+### LinkedHashSet
+
+**LinkedHashSet 底层是一个LinkedHashMap来实现的**
+
+- 有序
+- 元素不可以重复，可以为null
+- 不会自动排序
+- 线程不安全
+
+```java
+LinkedHashSet <Integer> numberSet = new LinkedHashSet<>();
+```
+
+### TreeSet
+
+**TreeSet底层是一个TreeMap来实现的**
+
+- 有序
+- 元素不可以重复，不可以为null
+- 会自动排序
+- 线程不安全
+
+```java
+TreeSet<Integer> numberSet = new TreeSet<>();
+```
 
