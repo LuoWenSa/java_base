@@ -1779,3 +1779,75 @@ LinkedHashSet <Integer> numberSet = new LinkedHashSet<>();
 TreeSet<Integer> numberSet = new TreeSet<>();
 ```
 
+## Map
+
+HashMap 是一个散列表，它存储的内容是键值对(key-value)映射。
+
+HashMap 实现了 Map 接口，**根据键的 HashCode 值存储数据，具有很快的访问速度**，最多允许一条记录的键为 null，不支持线程同步。
+
+- 有序
+- 不会自动排序
+- 线程不安全
+
+#### 遍历key
+
+```java
+//遍历key
+for (Integer integer : map.keySet()) {
+    System.out.println("key = " + integer);
+}
+```
+
+#### 遍历values
+
+```java
+//遍历value
+for (String value : map.values()) {
+    System.out.println("value = " + value);
+}
+```
+
+#### 迭代器遍历：iterator
+
+```java
+//迭代器：iterator
+Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
+while (iterator.hasNext()){
+    Map.Entry<Integer, String> entry = iterator.next();
+    //System.out.println("Key = " + iterator.next().getKey() + " Value = " + iterator.next().getValue()); //iterator.next()始终指向下一个元素，使用如上输出会报错，NoSuchElementException
+    System.out.println("Key = " + entry.getKey() + " Value = " + entry.getValue());
+}
+```
+
+## Java Iterator（迭代器）
+
+Java迭代器（Iterator）是 Java 集合框架中的一种机制，是一种用于遍历集合（如列表、集合和映射等）的接口。
+
+它提供了一种统一的方式来访问集合中的元素，而不需要了解底层集合的具体实现细节
+
+![img](ListIterator-Class-Diagram.jpg)
+
+- **next()** - 返回迭代器的下一个元素，并将迭代器的指针移到下一个位置。
+- **hasNext()** - 用于判断集合中是否还有下一个元素可以访问。
+- **remove()** - 从集合中删除迭代器最后访问的元素（可选操作）。
+
+<font color="#dd0000">遍历删除集合的元素建议使用</font>
+
+## Java Object 类
+
+https://www.runoob.com/java/java-object-class.html
+
+Java Object 类是所有类的父类，也就是说 Java 的所有类都继承了 Object，**子类可以使用 Object 的所有方法**。
+
+Object 类位于 java.lang 包中，编译时会自动导入，我们创建一个类时，如果没有明确继承一个父类，那么它就会自动继承 Object，成为 Object 的子类。
+
+**Object 类线程类方法：**
+
+```java
+1. void notify() //唤醒在该对象上等待的某个线程
+2. void notifyAll() //唤醒在该对象上等待的所有线程
+3. void wait() //让当前线程进入等待状态。直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法。
+4. void wait(long timeout) //让当前线程处于等待(阻塞)状态，直到其他线程调用此对象的 notify() 方法或 notifyAll() 方法，或者超过参数设置的timeout超时时间。
+5. void wait(long timeout, int nanos) //与 wait(long timeout) 方法类似，多了一个 nanos 参数，这个参数表示额外时间（以纳秒为单位，范围是 0-999999）。 所以超时的时间还需要加上 nanos 纳秒。
+```
+
