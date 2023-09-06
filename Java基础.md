@@ -1851,3 +1851,85 @@ Object 类位于 java.lang 包中，编译时会自动导入，我们创建一�
 5. void wait(long timeout, int nanos) //与 wait(long timeout) 方法类似，多了一个 nanos 参数，这个参数表示额外时间（以纳秒为单位，范围是 0-999999）。 所以超时的时间还需要加上 nanos 纳秒。
 ```
 
+## Java 泛型
+
+Java 泛型（generics）是 JDK 5 中引入的一个新特性, 泛型提供了编译时类型安全检测机制，该机制允许程序员在编译时检测到非法的类型。
+
+泛型的本质是参数化类型，也就是说所操作的数据类型被指定为一个参数。
+
+### java 中泛型标记符
+
+- **E** - Element (在集合中使用，因为集合中存放的是元素)
+- **T** - Type（Java 类）
+- **K** - Key（键）
+- **V** - Value（值）
+- **N** - Number（数值类型）
+- **？** - 表示不确定的 java 类型
+
+### 泛型方法
+
+定义泛型方法的规则：
+
+- 所有泛型方法声明都有一个类型参数声明部分（由尖括号分隔），该类型参数声明部分在方法返回类型之前（在下面例子中的 <E>）
+- 泛型方法体的声明和其他方法一样。注意**类型参数只能代表引用型类型**，不能是原始类型（像 **int、double、char** 等）
+
+```java
+public static void main(String[] args) {
+    Integer[] a = {1,2,3,4};  //用int不行，得用包装类
+    Character[] b = {'l','w','s'};
+    System.out.println("数字-printArray：");
+    printArray(a);
+    System.out.println("字符-printArray：");
+    printArray(b);
+}
+
+//使用泛型方法打印不同类型的数组元素
+public static <E> void printArray(E[] array){
+    for (E e : array) {
+        System.out.println("e = " + e);
+    }
+}
+```
+
+要声明一个有界的类型参数，首先列出类型参数的名称，后跟extends关键字，最后紧跟它的上界。<font color="#dd0000">extends表示上界，? extends Number</font>
+
+```java
+//只接收实现了Comparable接口的类，及其子类
+public static <N extends Comparable<N>> N max(N x, N y){
+    if(x.compareTo(y) > 0){
+        return x;
+    }else{
+        return y;
+    }
+}
+
+//判断Number子类的类型
+public static <T extends Number> String checkNumber(T x){
+    if(x instanceof Integer){
+        return "this is Integer";
+    }else if(x instanceof Double){
+        return "this is Double";
+    }else{
+        return "none of your business";
+    }
+}
+```
+
+<font color="#dd0000">super表示下界，? super Number</font>
+
+### 泛型类
+
+```java
+public class GenericDto<T>{
+    private T x;
+
+    public void set(T x){
+        this.x = x;
+    }
+
+    public T get(){
+        return this.x;
+    }
+}
+```
+
