@@ -19,6 +19,13 @@
             <artifactId>lombok</artifactId>
             <version>1.18.26</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.39</version>
+        </dependency>
+
     </dependencies>
 
 </project>

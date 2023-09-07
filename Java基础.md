@@ -1933,3 +1933,123 @@ public class GenericDto<T>{
 }
 ```
 
+## Java 序列化
+
+https://www.runoob.com/java/java-serialization.html
+
+请注意，一个类的对象要想序列化成功，必须满足两个条件：
+
+- 该类必须实现 java.io.Serializable 接口。
+
+- 该类的所有属性必须是可序列化的。如果有一个属性不是可序列化的，则该属性必须注明是短暂的。
+
+## Lambda 表达式
+
+https://www.runoob.com/java/java8-lambda-expressions.html
+
+简单例子：
+
+```java
+// 1. 不需要参数,返回值为 5  
+() -> 5  
+  
+// 2. 接收一个参数(数字类型),返回其2倍的值  
+x -> 2 * x  
+  
+// 3. 接受2个参数(数字),并返回他们的差值  
+(x, y) -> x – y  
+  
+// 4. 接收2个int型整数,返回他们的和  
+(int x, int y) -> x + y  
+  
+// 5. 接受一个 string 对象,并在控制台打印,不返回任何值(看起来像是返回void)  
+(String s) -> System.out.print(s)
+```
+
+## Stream API
+
+一些例子：
+
+```java
+//创建字符串List
+        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl", "bc");
+        //创建数字List
+        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+
+        //统计字符串List中非空字符串数量
+        System.out.println("stream count() = " + strings.stream().filter(String -> !String.isEmpty()).count());
+        //字符串List过滤空字符串
+        System.out.println("stream List() isNotEmpty = " + strings.stream().filter(String -> !String.isEmpty()).collect(Collectors.toList()));
+        //字符串List各元素按，拼接
+        System.out.println("stream List() join = " + strings.stream().filter(String -> !String.isEmpty()).collect(Collectors.joining(",")));
+        //字符串List去重
+        System.out.println("stream distinct = " + strings.stream().distinct().collect(Collectors.toList()));
+        //forEach输出
+        numbers.stream().limit(3).forEach(System.out::println);
+        //用 map 输出了元素对应的平方数,倒序输出
+        System.out.println("numbers stream 平方 = " + numbers.stream().map(i -> i * i).distinct().sorted((x,y)->y-x).collect(Collectors.toList()));
+        //用mapToInt做数值操作
+        System.out.println("numbers.stream().mapToInt(x -> x).sum() = " + numbers.stream().mapToInt(x -> x).sum());
+        System.out.println("numbers.stream().mapToInt(x -> x).max() = " + numbers.stream().mapToInt(x -> x).max().getAsInt());
+        System.out.println("numbers.stream().mapToInt(x -> x).min() = " + numbers.stream().mapToInt(x -> x).min().getAsInt());
+        System.out.println("numbers.stream().mapToInt(x -> x).average() = " + numbers.stream().mapToInt(x -> x).average().getAsDouble());
+```
+
+## Java MySQL 连接
+
+```java
+/**
+ * @author: Ray
+ * @date: 2023年09月07日 16:35
+ */
+public class JDBCtest {
+    final static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    final static String DB_URL = "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
+    static final String USER = "root";
+    static final String PASS = "";
+    static final String sql = "SELECT id, name, age FROM user limit 1";
+
+public static void main(String[] args) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            //1.注册JDBC驱动
+            Class.forName(JDBC_DRIVER);
+            //2.打开链接
+            System.out.println("连接数据库...");
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            //3.执行查询
+            System.out.println(" 实例化Statement对象...");
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                System.out.println("id = " + rs.getInt("id"));
+                System.out.println("name = " + rs.getString("name"));
+                System.out.println("age = " + rs.getInt("age"));
+            }
+            //4.关闭资源
+            rs.close();
+            conn.close();
+            stmt.close();
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(stmt != null){
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+}
+```
+
