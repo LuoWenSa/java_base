@@ -1,6 +1,7 @@
 package javaTest;
 
 import study.abstracts.AbstractEmployee;
+import study.dto.ManyExAbClass;
 
 /**
  * @author: Ray
@@ -8,6 +9,7 @@ import study.abstracts.AbstractEmployee;
  */
 public class abstractTest2 {
     public static void main(String[] args) {
-        AbstractEmployee abstractEmployee;
+        //AbstractEmployee abstractEmployee;
+        ManyExAbClass manyExAbClass = new ManyExAbClass();
     }
 }

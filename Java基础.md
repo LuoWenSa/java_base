@@ -1679,6 +1679,8 @@ Hashtable不允许存储null值和null键
 
 Properties 类常用于存储程序的配置信息，例如数据库连接信息、日志输出配置、应用程序设置等。使用Properties类，可以将这些信息存储在一个文本文件中，并在程序中读取这些信息
 
+<font color="#dd0000">Properties是线程安全的，且key和value都是String类型</font>
+
 ## Java 集合框架
 
 ![img](2243690-9cd9c896e0d512ed.gif)
