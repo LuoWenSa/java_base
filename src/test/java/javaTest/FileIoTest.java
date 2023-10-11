@@ -1,7 +1,10 @@
 package javaTest;
 
+import org.junit.Test;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 public class FileIoTest {
 
@@ -37,6 +40,33 @@ public class FileIoTest {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    //标准的文件批量读写
+    public void normalBatchFileIOTest(){
+        File sourceFile = new File("E:\\demo\\source.txt");
+        File targetFile = new File("E:\\demo\\target.txt");
+        try {
+            //获取输入流
+            FileInputStream in = new FileInputStream(sourceFile);
+            //批量读取
+            int len = 0;
+            byte[] buffer = new byte[1024]; //1024B = 1KB
+            FileOutputStream out = new FileOutputStream(targetFile);
+            while ((len = in.read(buffer)) > 0) { //每次读取1KB
+//                System.out.println("len = " + len);
+//                System.out.println("in.available() = " + in.available());
+//                System.out.println("buffer = " + Arrays.toString(buffer));
+//                System.out.println("buffer.length() = " + len);
+                out.write(buffer,0,len);
+            }
+            //关闭资源
+            out.close();
+            in.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
