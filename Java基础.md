@@ -402,7 +402,8 @@ public class Test {
          case 2:
             System.out.println("2");
          case 3:
-            System.out.println("3"); break;
+            System.out.println("3");
+            break;
          default:
             System.out.println("default");
       }
@@ -569,7 +570,32 @@ https://www.runoob.com/java/java-string.html
 
 0.底层还是字符数组char[]
 
-1.String 创建的字符串存储在**公共池**中，2.而 new 创建的字符串对象在**堆**上：
+1.String 创建的字符串存储在**公共池**中
+
+> 例：String a = "1";
+
+- 首先，jvm在编译阶段会判断方法区常量池中是否有 “1” 这个常量对象
+  - 如果有，a直接指向这个常量的引用
+  - 如果没有，就在常量池里创建这个常量对象
+
+2.而 new 创建的字符串对象在**堆**上
+
+> 例：String d = new String("test");
+
+- 首先，jvm在编译阶段会判断方法区常量池中是否有 “test” 这个常量对象，没有就创建
+- 其次，通过 `new` 在 堆 中创建 String对象，d 指向的就是这个String对象的地址
+
+3.＋运算
+
+> 例：String g = "hello" + "tomorrow";
+
+- jvm编译阶段过编译器优化后会把字符串常量直接合并成"hellotomorrow"，所以最终只在常量池中创建了**一个** “hellotomorrow” 常量对象
+
+> 例：String h = new String("hello") + new String("world");
+
+- 首先 new 创建了**1**个 StringBuilder() 对象
+- 接着 h = new String("hello") + new String("world") 创建了 **4** 个对象（和上述创建过程相同）
+- append()之后是StringBuilder对象，要转换成String对象，需要toString()，toString()会创建一个新的String对象，这里创建了**1**个对象
 
 ```java
 String s1 = "Runoob";              // String 直接创建
@@ -1159,7 +1185,7 @@ java.lang.ArithmeticException: / by zero
 	at javaTest.ExceptionTest.main(ExceptionTest.java:10)    
 ```
 
-**catch异常后，程序会继续执行，不会停止：**
+**<font color = red>catch异常后，程序会继续执行，不会停止：</font>**
 
 ```java
 try {
@@ -1282,7 +1308,7 @@ https://www.runoob.com/java/java-inheritance.html
 
 ### 一、super关键字
 
-使用super调用父类中被隐藏的成员变量以及方法，比如super.x，super.f()
+使用super调用父类中可调用的成员变量以及方法，比如super.x，super.f()
 使用super调用父类中的构造方法
 子类不继承父类的构造方法，使用super调用父类的构造方法，且**super必须是子类构造方法中的头一条语句**。即子类继承父类，**生成对象时必须先调用父类的构造方法**，父类得有一个不带参数得构造方法，方便子类重写。
 
