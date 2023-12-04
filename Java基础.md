@@ -38,10 +38,11 @@ https://www.runoob.com/java/java-basic-syntax.html
 
   ```java
   public final String finalId = "AnimalId";  //初始化得赋值声明
-  ```
-
-  **abstract** 修饰符，用来创建抽象类和抽象方法。抽象类不能用来实例化对象，声明抽象类的**唯一目的**是为了<font color="#dd0000">将来对该类进行扩充</font>。
-
+  public final String finalId; //也可以这样，但是必须定义该字段对应的构造器
+```
+  
+**abstract** 修饰符，用来创建抽象类和抽象方法。抽象类不能用来实例化对象，声明抽象类的**唯一目的**是为了<font color="#dd0000">将来对该类进行扩充</font>。
+  
   一个类不能同时被 abstract 和 final 修饰。如果一个类包含抽象方法，那么该类一定要声明为抽象类，否则将出现编译错误。
   
   抽象类可以包含抽象方法和非抽象方法。
@@ -1693,7 +1694,7 @@ https://www.runoob.com/java/java-data-structures.html
 
 > Hashtable extends Dictionary
 
-它和HashMap类很相似，但是它支持同步，是线程安全的。
+它和HashMap类很相似，但是它支持同步，<font color="#dd0000">是线程安全的</font>。
 
 像HashMap一样，Hashtable在哈希表中存储键/值对。当使用一个哈希表，要指定用作键的对象，以及要链接到该键的值。
 
@@ -1703,7 +1704,7 @@ Hashtable不允许存储null值和null键
 
 > Properties extends Hashtable
 
-Properties 类常用于存储程序的配置信息，例如数据库连接信息、日志输出配置、应用程序设置等。使用Properties类，可以将这些信息存储在一个文本文件中，并在程序中读取这些信息
+Properties 类常用于存储程序的配置信息，例如数据库连接信息、日志输出配置、应用程序设置等。使用Properties类，可以将这些信息存储在一个文本文件中，并在程序中读取这些信息。**属性列表中每个键及其对应值都是一个字符串**
 
 ## Java 集合框架
 
