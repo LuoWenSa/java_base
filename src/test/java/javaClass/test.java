@@ -35,7 +35,7 @@ public class test {
         animal.eat();
         animal.speak();
 
-        //todo java 继承 父类 protected 方法
+
     }
 
 }
