@@ -1821,6 +1821,14 @@ while (iterator.hasNext()){
 }
 ```
 
+#### foreach
+
+```java
+map.forEach((k,v)-> System.out.println(k+":"+v));
+```
+
+
+
 ## Java Iterator（迭代器）
 
 Java迭代器（Iterator）是 Java 集合框架中的一种机制，是一种用于遍历集合（如列表、集合和映射等）的接口。
@@ -2055,3 +2063,34 @@ public static void main(String[] args) {
 }
 ```
 
+# SpringMVC
+
+![](https://s2.51cto.com/images/blog/202404/08093453_661349bde238f87240.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp/resize,m_fixed,w_1184)
+
+![](https://s2.51cto.com/images/blog/202112/21142547_61c1736bd339d78435.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp/resize,m_fixed,w_1184)
+
+![](https://i-blog.csdnimg.cn/blog_migrate/dbeff223d19f4460d7302e0523f59f01.png)
+
+Handler = Controller
+
+```xml
+<!--HandlerMapping的作用-->
+<!--BeanNameUrlHandlerMapping映射器
+会根据请求的url - (http://localhost:8080/hello)的url(/hello)
+去匹配对应的bean的id并寻找对应的controller
+-->
+<bean id="/test" class="com.znx.controller.HelloController"/>
+```
+
+**过滤器和拦截器的区别**：拦截器是AOP思想的具体应用。它是横切进项目的，不影响项目原有功能
+
+过滤器：
+
+- servlet规范中的一部分，任何java web工程都可以使用
+- 在url-pattern中配置了/*之后，可以对所有要访问的资源进行拦截
+
+拦截器：
+
+- **拦截器是SpringMVC框架自己的**，只有使用了SpringMVC框架的工程才能使用
+- **拦截器只会拦截访问的控制器方法**，如果访问的是jsp/html/css/image/js是不会进行拦截的
+- 想要自定义拦截器，**必须实现HandlerInterceptor接口**
