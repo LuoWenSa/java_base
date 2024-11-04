@@ -10,4 +10,9 @@ public class SonClass extends FatherClass{
         System.out.println("SonClass的无参构造方法");
     }
 
+    public SonClass(int age){
+        super(age);
+        System.out.println("SonClass的有参构造方法");
+    }
+
 }

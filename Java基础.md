@@ -1326,6 +1326,14 @@ public class C implements A,B {
 
 - 如果父类构造器没有参数，则在子类的构造器中不需要使用 **super** 关键字调用父类构造器，系统会自动调用父类的无参构造器。
 
+### 五、父子类复杂继承关系
+
+父子类静态代码块：初始化只会被调用一次，并优先调用；
+
+父子类构造方法：在静态代码块执行完成之后，优先调用父类的，再子类的构造方法；
+
+
+
 ## Java 重写(Override)与重载(Overload)
 
 https://www.runoob.com/java/java-override-overload.html

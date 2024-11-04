@@ -11,7 +11,7 @@ public class ExtendTest {
         //Gorilla gorilla = new Gorilla("小黑");
         //Chimpanzee chimpanzee = new Chimpanzee();
         //FatherClass fatherClass = new FatherClass();
-        SonClass sonClass = new SonClass();
-        FatherClass fatherClass = new FatherClass();
+        SonClass sonClass = new SonClass(18);
+        //FatherClass fatherClass = new FatherClass();
     }
 }
