@@ -1242,7 +1242,7 @@ java.lang.ArrayIndexOutOfBoundsException: 2
 
 ### 五、try-with-resources 处理多个资源
 
-try-with-resources 语句中可以声明多个资源，方法是使用分号 **;** 分隔各个资源，并且可以在语句执行完毕后确保每个资源都被自动关闭， 不用**finally** 来关闭资源，减少代码
+try-with-resources 语句中可以声明多个资源，方法是使用分号 **;** 分隔各个资源，并且可以在语句执行完毕后确保每个资源都被自动关闭， 不用**finally** 来关闭资源，减少代码。实现了 AutoCloseable 或 Closeable 接口的资源一定可以用这种方法自动关闭
 
 ```java
 //try-with-resources 处理多个资源
